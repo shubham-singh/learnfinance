@@ -1,0 +1,28 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "The Intelligent Investor",
+      "author": "Benjamin Graham",
+      "price": 465,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/91+t0Di07FL.jpg",
+      "inCart": false
+    },
+    {
+      "id": 2,
+      "name": "Security Analysis",
+      "author": "Benjamin Graham, David Dodd",
+      "price": 1100,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/71XuxWVu1LL.jpg",
+      "inCart": false
+    },
+    {
+      "id": 3,
+      "name": "Benjamin Graham on Value Investing",
+      "author": "Janet Lowe",
+      "price": 459,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/91jOYf21U5L.jpg",
+      "inCart": false
+    }
+  ]
+}
