@@ -31,11 +31,48 @@ export const ProductReducer = (state, action) => {
         sortBy: action.payload
       };
 
-    case "REMOVE_FILTER":
+    case "REMOVE_SORT":
       return {
         ...state,
         sortBy: null
       };
+
+    case "INCLUDE_OUT_OF_STOCK":
+      return {
+        ...state,
+        showInventoryAll: !state.showInventoryAll
+      };
+
+    case "FILTER_BY_CATEGORY":
+      return {
+        ...state,
+        category: {
+          ...state.category,
+          [action.payload]: !state.category[action.payload]
+        }
+      };
+
+    case "RESET_FILTER":
+      return {
+        ...state,
+        showInventoryAll: false,
+        sortBy: null,
+        category: {
+          "Options Trading": false,
+          "Technical Analysis": false,
+          "Value Investing": false
+        }
+      };
+    // if (state.category.includes(action.payload)) {
+    //   return {
+    //     ...state,
+    //     category: state.category.filter((item) => item !== action.payload)
+    //   };
+    // }
+    // return {
+    //   ...state,
+    //   category: [...state.category, action.payload]
+    // };
 
     default:
       return state;

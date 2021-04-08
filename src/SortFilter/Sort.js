@@ -4,9 +4,9 @@ const Sort = (props) => {
   const { productDispatch } = useProduct();
 
   return (
-    <div className="popup-h">
+    <div className="popup">
       <div className="popup-empty" onClick={() => props.setOpen(null)}></div>
-      <div className="popup-content shadow">
+      <div className="popup-content popup-half shadow">
         <div className="popup-heading">
           <h3>Sort by</h3>
           <svg
@@ -46,7 +46,7 @@ const Sort = (props) => {
         <div
           className="p-s large"
           onClick={() => {
-            productDispatch({ type: "SORT", payload: "REMOVE_FILTER" });
+            productDispatch({ type: "REMOVE_SORT" });
             props.setOpen(null);
           }}
         >

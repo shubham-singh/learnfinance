@@ -6,7 +6,13 @@ export const ProductContext = createContext();
 export const ProductContextProvider = (props) => {
   const [products, dispatch] = useReducer(ProductReducer, {
     products: [],
-    sortBy: null
+    sortBy: null,
+    category: {
+      "Options Trading": false,
+      "Technical Analysis": false,
+      "Value Investing": false
+    },
+    showInventoryAll: false
   });
 
   return (
@@ -14,6 +20,8 @@ export const ProductContextProvider = (props) => {
       value={{
         products: products.products,
         sortBy: products.sortBy,
+        category: products.category,
+        showInventoryAll: products.showInventoryAll,
         productDispatch: dispatch
       }}
     >

@@ -6,7 +6,7 @@ const isItemInCart = (cartArr, product) => {
   return cartArr.some((item) => item.id === product.id);
 };
 
-const AddToCart = ({ product, wishlistView }) => {
+const AddToCart = ({ product, wishlistView, text }) => {
   const { cart, cartDispatch } = useCart();
   const { wishlistDispatch } = useWishlist();
 
@@ -30,7 +30,7 @@ const AddToCart = ({ product, wishlistView }) => {
           }
         }}
       >
-        Add to Cart
+        {text}
       </button>
     );
   }

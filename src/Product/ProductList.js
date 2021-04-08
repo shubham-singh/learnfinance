@@ -5,11 +5,29 @@ import { useProduct } from "./ProductContext";
 import SortFilter from "../SortFilter/SortFilter";
 
 const ProductList = () => {
-  const { products, sortBy, productDispatch } = useProduct();
+  const {
+    products,
+    sortBy,
+    category,
+    showInventoryAll,
+    productDispatch
+  } = useProduct();
+
+  const trimNames = (arrOfObjects) => {
+    return arrOfObjects.map((book) => {
+      if (book.name.length > 35) {
+        return { ...book, name: book.name.slice(0, 35) + "..." };
+      }
+      return book;
+    });
+  };
+
   const getData = async () => {
     try {
       const response = await axios.get("api/books");
-      productDispatch({ type: "SET_PRODUCTS", payload: response.data });
+      const data = trimNames(response.data);
+      // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
+      productDispatch({ type: "SET_PRODUCTS", payload: data });
     } catch (error) {
       console.log("Something went wrong");
     }
@@ -28,15 +46,45 @@ const ProductList = () => {
       return products;
     }
   }
+
+  function getFilteredData(productList, showInventoryAll, categories) {
+    return categories
+      .reduce(
+        (accumulator, initial) => {
+          return [
+            ...accumulator,
+            ...productList.filter((product) => product.category === initial)
+          ];
+        },
+        categories.length === 0 ? productList : []
+      )
+      .filter(({ inStock }) => (showInventoryAll ? true : inStock));
+  }
+
+  const categoriesArr = Object.keys(category);
+
+  const categories = categoriesArr.reduce((accumulator, initial) => {
+    if (category[initial]) {
+      return [...accumulator, initial];
+    }
+    return accumulator;
+  }, []);
+
   const sortedData = getSortedData(products, sortBy);
+  // const filteredData = getFilteredData(sortedData, showInventoryAll, category);
+  const filteredData = getFilteredData(
+    sortedData,
+    showInventoryAll,
+    categories
+  );
 
   return (
     <div>
       <SortFilter />
 
-      <h1>Products</h1>
+      <h1>Learn Finance</h1>
       <div className="products">
-        {sortedData.map((product) => (
+        {filteredData.map((product) => (
           <Product
             key={product.id}
             name={product.name}
