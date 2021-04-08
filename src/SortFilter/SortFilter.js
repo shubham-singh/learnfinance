@@ -19,7 +19,7 @@ const SortFilter = () => {
     );
   } else {
     return (
-      <div className="alert mb-m p-s flex-r justify-e hide-d">
+      <div className="alert mb-m p-s flex-r justify-e hide-d shadow">
         <div className="flex-r justify-e" onClick={() => setOpen("filter")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
