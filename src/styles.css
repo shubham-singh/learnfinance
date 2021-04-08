@@ -28,6 +28,17 @@ ul {
   justify-content: center;
 }
 
+.stick-b {
+  display: flex;
+  justify-content: space-evenly;
+  padding: var(--padding-s);
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: black;
+  color: white;
+}
+
 .change-quantity {
   display: flex;
   justify-content: space-between;
@@ -40,7 +51,7 @@ ul {
   align-items: center;
 }
 
-.popup-h {
+.popup {
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -48,6 +59,13 @@ ul {
   flex-direction: column;
   z-index: 3;
   backdrop-filter: brightness(50%);
+}
+
+.popup-half {
+  height: 40%;
+}
+.popup-full {
+  height: 80%;
 }
 
 .popup-empty {
@@ -58,7 +76,6 @@ ul {
   display: flex;
   flex-direction: column;
   background-color: white;
-  height: 40%;
   padding: var(--padding-l);
   border-top-left-radius: var(--border-radius-s);
   border-top-right-radius: var(--border-radius-s);
@@ -75,4 +92,18 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.checkbox {
+  margin: 0;
+  margin-right: 0.5rem;
+}
+
+.hr-half {
+  padding: 0;
+  margin: 0 auto;
+  background-color: grey;
+  border-width: 1px 0 0 0;
+  border-style: ridge;
+  width: 40vw;
 }
