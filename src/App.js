@@ -8,7 +8,8 @@ import Cart from "./Cart/Cart";
 
 import { Routes, Route } from "react-router-dom";
 
-setUpServer();
+// setUpServer();
+
 export default function App() {
   return (
     <div className="App">

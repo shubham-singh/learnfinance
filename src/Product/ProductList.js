@@ -15,8 +15,8 @@ const ProductList = () => {
 
   const trimNames = (arrOfObjects) => {
     return arrOfObjects.map((book) => {
-      if (book.name.length > 35) {
-        return { ...book, name: book.name.slice(0, 35) + "..." };
+      if (book.title.length > 35) {
+        return { ...book, title: book.title.slice(0, 35) + "..." };
       }
       return book;
     });
@@ -24,14 +24,26 @@ const ProductList = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get("api/books");
-      const data = trimNames(response.data);
+      const response = await axios.get(
+        "https://eCommerce-learnfinancefun.ishubhamsingh.repl.co/"
+      );
+      const data = trimNames(response.data.products);
       // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
       productDispatch({ type: "SET_PRODUCTS", payload: data });
     } catch (error) {
-      console.log("Something went wrong");
+      console.log("Something went wrong", error, error.message);
     }
   };
+  // const getData = async () => {
+  //   try {
+  //     const response = await axios.get("api/books");
+  //     const data = trimNames(response.data);
+  //     // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
+  //     productDispatch({ type: "SET_PRODUCTS", payload: data });
+  //   } catch (error) {
+  //     console.log("Something went wrong");
+  //   }
+  // };
 
   useEffect(() => {
     getData();
@@ -86,9 +98,7 @@ const ProductList = () => {
       <div className="products">
         {filteredData.map((product) => (
           <Product
-            key={product.id}
-            name={product.name}
-            year={product.year}
+            key={product._id}
             product={product}
             wishlistText="Add to Wishlist"
           />

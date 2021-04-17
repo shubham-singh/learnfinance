@@ -7,7 +7,6 @@ const item = (cartArr, product) => {
 
 const ChangeQuantity = ({ product }) => {
   const { cart, cartDispatch } = useCart();
-  const { productDispatch } = useProduct();
 
   const cartProduct = item(cart, product);
 

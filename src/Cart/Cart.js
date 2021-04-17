@@ -23,13 +23,7 @@ const Cart = () => {
         <div className="products">
           {cart.map((product) => {
             return (
-              <Product
-                key={product.id}
-                name={product.name}
-                year={product.year}
-                product={product}
-                cartView={true}
-              />
+              <Product key={product.id} product={product} cartView={true} />
             );
           })}
         </div>

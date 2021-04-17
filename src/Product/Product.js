@@ -10,13 +10,13 @@ const Product = ({
   return (
     <div className="product-card">
       <div className="product-image relative">
-        <img className="shadow" src={product.img} alt="product" />
+        <img className="shadow" src={product.img[0]} alt="product" />
         <AddToWishlist product={product} cartView={cartView} />
       </div>
 
       <div className="product-content">
         <div className="product-description">
-          <h3 className="product-name">{product.name}</h3>
+          <h3 className="product-name">{product.title}</h3>
           <h4 className="product-origin">{product.author}</h4>
         </div>
 
