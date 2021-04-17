@@ -7,7 +7,7 @@ export const ProductReducer = (state, action) => {
       return {
         ...state,
         products: state.products.map((product) => {
-          if (product.id === action.payload.id) {
+          if (product._id === action.payload._id) {
             return { ...product, inCart: true };
           }
           return { ...product };
@@ -18,7 +18,7 @@ export const ProductReducer = (state, action) => {
       return {
         ...state,
         products: state.products.map((product) => {
-          if (product.id === action.payload.id) {
+          if (product._id === action.payload._id) {
             return { ...product, inCart: false };
           }
           return { ...product };

@@ -7,7 +7,7 @@ const AddToWishlist = ({ product, cartView }) => {
   const { cartDispatch } = useCart();
 
   const isItemInWishlist = (wishlistArr, product) => {
-    return wishlistArr.some((wishlist) => wishlist.id === product.id);
+    return wishlistArr.some((wishlist) => wishlist._id === product._id);
   };
 
   const isWishlisted = isItemInWishlist(wishlist, product);

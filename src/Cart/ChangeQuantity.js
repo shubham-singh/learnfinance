@@ -2,7 +2,7 @@ import { useCart } from "./CartContext";
 import { useProduct } from "../Product/ProductContext";
 
 const item = (cartArr, product) => {
-  return cartArr.find((item) => item.id === product.id);
+  return cartArr.find((item) => item._id === product._id);
 };
 
 const ChangeQuantity = ({ product }) => {

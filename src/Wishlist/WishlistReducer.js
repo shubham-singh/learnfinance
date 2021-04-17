@@ -3,13 +3,13 @@ export const WishlistReducer = (state, action) => {
     case "ADD_OR_REMOVE_WISHLIST":
       console.log(
         "Already in WishList? ",
-        state.wishlist.some((item) => item.id === action.payload.id)
+        state.wishlist.some((item) => item._id === action.payload._id)
       );
-      if (state.wishlist.some((item) => item.id === action.payload.id)) {
+      if (state.wishlist.some((item) => item._id === action.payload._id)) {
         return {
           ...state,
           wishlist: state.wishlist.filter(
-            (product) => product.id !== action.payload.id
+            (product) => product._id !== action.payload._id
           )
         };
       } else {

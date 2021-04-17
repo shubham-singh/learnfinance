@@ -9,14 +9,14 @@ export const CartReducer = (state, action) => {
     case "REMOVE_FROM_CART":
       return {
         ...state,
-        cart: state.cart.filter((product) => product.id !== action.payload.id)
+        cart: state.cart.filter((product) => product._id !== action.payload._id)
       };
 
     case "INCREMENT":
       return {
         ...state,
         cart: state.cart.map((product) => {
-          if (product.id === action.payload.id) {
+          if (product._id === action.payload._id) {
             return { ...product, quantity: action.payload.quantity + 1 };
           }
           return { ...product };
@@ -27,13 +27,15 @@ export const CartReducer = (state, action) => {
       if (action.payload.quantity === 1) {
         return {
           ...state,
-          cart: state.cart.filter((product) => product.id !== action.payload.id)
+          cart: state.cart.filter(
+            (product) => product._id !== action.payload._id
+          )
         };
       }
       return {
         ...state,
         cart: state.cart.map((product) => {
-          if (product.id === action.payload.id) {
+          if (product._id === action.payload._id) {
             return { ...product, quantity: action.payload.quantity - 1 };
           }
           return { ...product };

@@ -3,7 +3,7 @@ import ChangeQuantity from "./ChangeQuantity";
 import { useWishlist } from "../Wishlist/WishlistContext";
 
 const isItemInCart = (cartArr, product) => {
-  return cartArr.some((item) => item.id === product.id);
+  return cartArr.some((item) => item._id === product._id);
 };
 
 const AddToCart = ({ product, wishlistView, text }) => {
