@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import Product from "./Product";
 import { useProduct } from "./ProductContext";
-import SortFilter from "../SortFilter/SortFilter";
+import SortFilterLayout from "../SortFilter/SortFilterLayout";
 
 const ProductList = () => {
   const {
@@ -91,10 +91,11 @@ const ProductList = () => {
   );
 
   return (
-    <div>
-      <SortFilter />
+    <div className="homepage">
+      <SortFilterLayout />
 
-      <h1>Learn Finance</h1>
+      <h1 className="heading m-s hide-d">Learn Finance</h1>
+
       <div className="products">
         {filteredData.map((product) => (
           <Product
@@ -104,6 +105,8 @@ const ProductList = () => {
           />
         ))}
       </div>
+
+      <div className="empty-space hide-d"></div>
     </div>
   );
 };

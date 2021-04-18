@@ -14,6 +14,15 @@ const AddToCart = ({ product, wishlistView, text }) => {
 
   if (inCart) {
     return <ChangeQuantity product={product} />;
+  } else if (!product.inStock) {
+    return (
+      <button
+        disabled
+        className="btn btn-classic btn-disabled secondary shadow w-full"
+      >
+        Out of Stock
+      </button>
+    );
   } else {
     return (
       <button
