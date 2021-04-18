@@ -8,8 +8,6 @@
 
 .heading {
   font-family: "Dancing Script", cursive;
-  margin: 0;
-  padding: var(--padding-s);
 }
 
 .nav a {

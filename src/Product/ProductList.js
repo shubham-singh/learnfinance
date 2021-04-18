@@ -94,7 +94,7 @@ const ProductList = () => {
     <div className="homepage">
       <SortFilterLayout />
 
-      <h1 className="heading m-s hide-d">Learn Finance</h1>
+      <h1 className="heading m-null p-s hide-d">Learn Finance</h1>
 
       <div className="products">
         {filteredData.map((product) => (
