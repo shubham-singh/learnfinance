@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "./Cart/CartContext";
-import { useWishlist } from "./Wishlist/WishlistContext";
+import { useCart } from "../Cart/CartContext";
+import { useWishlist } from "../Wishlist/WishlistContext";
+import { ReactComponent as MenuIcon } from "../assets/icons/MenuIcon.svg";
 
-const Navbar = () => {
+const NavbarMobile = () => {
   const [navOpen, setNavOpen] = useState("no");
 
   const { wishlist } = useWishlist();
@@ -18,34 +19,33 @@ const Navbar = () => {
           onClick={() => setNavOpen("no")}
         >
           <Link to="/">Books</Link>
-          <Link to="/wishlist">Wishlist {wishlist.length}</Link>
-          <Link to="/cart">Cart {items}</Link>
+          <Link to="/wishlist">
+            <div className="flex-row-center">
+              Wishlist
+              <span className="txt-badge small">{wishlist.length}</span>
+            </div>
+          </Link>
+          <Link to="/cart">
+            <div className="flex-row-center">
+              Cart
+              <span className="txt-badge small">{items}</span>
+            </div>
+          </Link>
         </div>
       </div>
     );
   } else {
     return (
-      <div className="hide-d">
+      <div>
         <button
           onClick={() => setNavOpen("yes")}
           className="btn btn-floating secondary shadow p-null"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fillRule="evenodd"
-              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-            />
-          </svg>
+          <MenuIcon />
         </button>
       </div>
     );
   }
 };
 
-export default Navbar;
+export default NavbarMobile;

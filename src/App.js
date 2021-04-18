@@ -1,7 +1,8 @@
 import "./styles.css";
-import setUpServer from "./api/mock.server";
+// import setUpServer from "./api/mock.server";
 
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
+import NavLayout from "./Navigation/NavLayout";
 import ProductList from "./Product/ProductList";
 import Wishlist from "./Wishlist/Wishlist";
 import Cart from "./Cart/Cart";
@@ -13,7 +14,8 @@ import { Routes, Route } from "react-router-dom";
 export default function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavLayout />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/cart" element={<Cart />} />
