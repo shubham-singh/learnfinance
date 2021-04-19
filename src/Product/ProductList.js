@@ -25,8 +25,11 @@ const ProductList = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        "https://bookslearnfinancefun-backend.ishubhamsingh.repl.co/"
+        "https://books-learnfinance-fun.herokuapp.com/"
       );
+      // const response = await axios.get(
+      //   "https://bookslearnfinancefun-backend.ishubhamsingh.repl.co/"
+      // );
       const data = trimNames(response.data.products);
       // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
       productDispatch({ type: "SET_PRODUCTS", payload: data });

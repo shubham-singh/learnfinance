@@ -105,8 +105,11 @@ ul {
   .products {
     grid-area: main-content;
   }
-  nav {
+  .nav {
     grid-area: navbar;
+    position: sticky;
+    top: 0;
+    z-index: 3;
   }
   .homepage {
     display: grid;
