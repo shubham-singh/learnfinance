@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Product from "./Product";
 import { useProduct } from "./ProductContext";
@@ -13,6 +13,8 @@ const ProductList = () => {
     productDispatch
   } = useProduct();
 
+  const [showLoader, setShowLoader] = useState(null);
+
   const trimNames = (arrOfObjects) => {
     return arrOfObjects.map((book) => {
       if (book.title.length > 35) {
@@ -23,6 +25,7 @@ const ProductList = () => {
   };
 
   const getData = async () => {
+    setShowLoader("show");
     try {
       const response = await axios.get(
         "https://books-learnfinance-fun.herokuapp.com/"
@@ -33,6 +36,7 @@ const ProductList = () => {
       const data = trimNames(response.data.products);
       // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
       productDispatch({ type: "SET_PRODUCTS", payload: data });
+      setShowLoader(null);
     } catch (error) {
       console.log("Something went wrong", error, error.message);
     }
@@ -100,6 +104,12 @@ const ProductList = () => {
       <h1 className="heading m-null p-s hide-d">Learn Finance</h1>
 
       <div className="products">
+        {showLoader && (
+          <div class="spinner">
+            <div></div>
+            <div></div>
+          </div>
+        )}
         {filteredData.map((product) => (
           <Product
             key={product._id}
