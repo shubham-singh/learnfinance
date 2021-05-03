@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../Cart/CartContext";
-import { useWishlist } from "../Wishlist/WishlistContext";
 import { ReactComponent as MenuIcon } from "../assets/icons/MenuIcon.svg";
 
 const NavbarMobile = () => {
   const [navOpen, setNavOpen] = useState("no");
-
-  const { wishlist } = useWishlist();
-  const { items } = useCart();
 
   if (navOpen === "yes") {
     return (
@@ -20,16 +15,10 @@ const NavbarMobile = () => {
         >
           <Link to="/">Books</Link>
           <Link to="/wishlist">
-            <div className="flex-row-center">
-              Wishlist
-              <span className="txt-badge small">{wishlist.length}</span>
-            </div>
+            <div className="flex-row-center">Wishlist</div>
           </Link>
           <Link to="/cart">
-            <div className="flex-row-center">
-              Cart
-              <span className="txt-badge small">{items}</span>
-            </div>
+            <div className="flex-row-center">Cart</div>
           </Link>
         </div>
       </div>

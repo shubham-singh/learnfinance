@@ -1,5 +1,6 @@
 import { useCart } from "../Cart/CartContext";
 import { useWishlist } from "./WishlistContext";
+import { ReactComponent as WishlistIcon } from "../assets/icons/WishlistIcon.svg";
 
 const AddToWishlist = ({ product, cartView }) => {
   const { wishlist, wishlistDispatch } = useWishlist();
@@ -32,20 +33,9 @@ const AddToWishlist = ({ product, cartView }) => {
         }
       }}
     >
-      <svg
+      <WishlistIcon
         style={isWishlisted ? { color: "#dc3545" } : { color: "white" }}
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        stroke="#dc3545"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fillRule="evenodd"
-          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-        />
-      </svg>
+      />
     </div>
   );
 };

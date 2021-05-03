@@ -34,11 +34,11 @@ const ProductList = () => {
       //   "https://bookslearnfinancefun-backend.ishubhamsingh.repl.co/"
       // );
       const data = trimNames(response.data.products);
-      // productDispatch({ type: "SET_PRODUCTS", payload: response.data });
       productDispatch({ type: "SET_PRODUCTS", payload: data });
       setShowLoader(null);
     } catch (error) {
       console.log("Something went wrong", error, error.message);
+      setShowLoader("error");
     }
   };
   // const getData = async () => {
@@ -90,12 +90,28 @@ const ProductList = () => {
   }, []);
 
   const sortedData = getSortedData(products, sortBy);
-  // const filteredData = getFilteredData(sortedData, showInventoryAll, category);
   const filteredData = getFilteredData(
     sortedData,
     showInventoryAll,
     categories
   );
+
+  function showProducts() {
+    if (showLoader === "show") {
+      return (
+        <div class="spinner">
+          <div></div>
+          <div></div>
+        </div>
+      );
+    } else if (showLoader === "error") {
+      return <p>something went wrong :(</p>;
+    } else {
+      return filteredData.map((product) => (
+        <Product key={product._id} product={product} />
+      ));
+    }
+  }
 
   return (
     <div className="homepage">
@@ -103,21 +119,7 @@ const ProductList = () => {
 
       <h1 className="heading m-null p-s hide-d">Learn Finance</h1>
 
-      <div className="products">
-        {showLoader && (
-          <div class="spinner">
-            <div></div>
-            <div></div>
-          </div>
-        )}
-        {filteredData.map((product) => (
-          <Product
-            key={product._id}
-            product={product}
-            wishlistText="Add to Wishlist"
-          />
-        ))}
-      </div>
+      <div className="products">{showProducts()}</div>
 
       <div className="empty-space hide-d"></div>
     </div>

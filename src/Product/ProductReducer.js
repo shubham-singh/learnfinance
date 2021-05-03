@@ -63,16 +63,6 @@ export const ProductReducer = (state, action) => {
           "Value Investing": false
         }
       };
-    // if (state.category.includes(action.payload)) {
-    //   return {
-    //     ...state,
-    //     category: state.category.filter((item) => item !== action.payload)
-    //   };
-    // }
-    // return {
-    //   ...state,
-    //   category: [...state.category, action.payload]
-    // };
 
     default:
       return state;
