@@ -1,6 +1,7 @@
 import { useCart } from "./CartContext";
 import ChangeQuantity from "./ChangeQuantity";
 import { useWishlist } from "../Wishlist/WishlistContext";
+import { useSnackbar } from "../Snackbar/SnackbarContext";
 
 const isItemInCart = (cartArr, product) => {
   return cartArr.some((item) => item._id === product._id);
@@ -9,6 +10,7 @@ const isItemInCart = (cartArr, product) => {
 const AddToCart = ({ product, wishlistView, text }) => {
   const { cart, cartDispatch } = useCart();
   const { wishlistDispatch } = useWishlist();
+  const { snackbarDispatch } = useSnackbar();
 
   const inCart = isItemInCart(cart, product);
 
@@ -34,8 +36,16 @@ const AddToCart = ({ product, wishlistView, text }) => {
               type: "ADD_OR_REMOVE_WISHLIST",
               payload: product
             });
+            snackbarDispatch({
+              type: "SHOW_SNACKBAR",
+              payload: "Moved to Cart"
+            });
           } else {
             cartDispatch({ type: "ADD_TO_CART", payload: product });
+            snackbarDispatch({
+              type: "SHOW_SNACKBAR",
+              payload: "Added to Cart"
+            });
           }
         }}
       >

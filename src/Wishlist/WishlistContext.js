@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { WishlistReducer } from "./WishlistReducer";
+import { useSnackbar } from "../Snackbar/SnackbarContext";
 
 export const WishlistContext = createContext();
 

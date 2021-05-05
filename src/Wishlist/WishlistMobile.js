@@ -2,7 +2,7 @@ import Product from "../Product/Product";
 import { useWishlist } from "./WishlistContext";
 import { Link } from "react-router-dom";
 
-const Wishlist = () => {
+const WishlistMobile = () => {
   const { wishlist } = useWishlist();
 
   if (wishlist.length === 0) {
@@ -20,18 +20,21 @@ const Wishlist = () => {
 
   return (
     <div className="products">
-      <h1>Wishlist: {wishlist.length}</h1>
+      <h2 className="m-m">Wishlist: {wishlist.length}</h2>
       <ul>
         {wishlist.map((product) => {
           return (
-            <Product
-              key={product.id}
-              name={product.name}
-              year={product.year}
-              product={product}
-              wishlistView={true}
-              cartButtonText="Move To Cart"
-            />
+            <>
+              <Product
+                key={product.id}
+                name={product.name}
+                year={product.year}
+                product={product}
+                wishlistView={true}
+                cartButtonText="Move To Cart"
+              />
+              <hr className="w-full" />
+            </>
           );
         })}
       </ul>
@@ -39,4 +42,4 @@ const Wishlist = () => {
   );
 };
 
-export default Wishlist;
+export default WishlistMobile;

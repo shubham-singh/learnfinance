@@ -2,7 +2,7 @@ import Product from "../Product/Product";
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const CartMobile = () => {
   const { cart, total, items } = useCart();
 
   if (items === 0) {
@@ -19,14 +19,18 @@ const Cart = () => {
   } else {
     return (
       <div>
-        <h1>Cart</h1>
-        <div className="products">
+        <h2 className="m-m">Cart</h2>
+        <div className="cart-products">
           {cart.map((product) => {
             return (
-              <Product key={product._id} product={product} cartView={true} />
+              <>
+                <Product key={product._id} product={product} cartView={true} />
+                <hr className="w-full" />
+              </>
             );
           })}
         </div>
+        <div className="empty-space"></div>
         <div className="stick-b large">
           <span>Checkout</span>
           <span>&#8377; {total.toLocaleString()}</span>
@@ -36,4 +40,4 @@ const Cart = () => {
   }
 };
 
-export default Cart;
+export default CartMobile;

@@ -6,6 +6,20 @@
   text-align: center;
 }
 
+.snackbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /* left: 50%; */
+  margin: var(--margin-l) var(--margin-m);
+  padding: 0 var(--padding-xl);
+  border-radius: var(--border-radius-xs);
+  /* background-color: rgba(0, 0, 0, 0.9); */
+  background-color: grey;
+  color: white;
+  z-index: 3;
+}
+
 .heading {
   font-family: "Dancing Script", cursive;
 }
@@ -38,6 +52,21 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.cart-products {
+  grid-name: cart-products;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto var(--margin-xs);
+}
+
+.wishlist-products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stick-b {
@@ -78,7 +107,54 @@ ul {
 }
 
 .empty-space {
-  margin: 5rem 0;
+  margin: 10rem 0;
+}
+
+/* Product */
+.product-card-horizontal {
+  display: flex;
+  flex-direction: row;
+  height: 210px;
+  width: fit-content;
+  margin: 1rem 0;
+}
+
+.product-image-horizontal {
+  margin-right: 1rem;
+}
+
+.product-image-horizontal img {
+  height: 210px;
+  max-width: 140px;
+  object-fit: contain;
+  border-radius: 0.7rem;
+}
+
+.product-content-horizontal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 210px;
+  position: relative;
+}
+
+.product-description-horizontal {
+  flex-grow: unset;
+}
+
+.product-name-horizontal {
+  text-align: left;
+  color: black;
+}
+
+.product-origin-horizontal {
+  text-align: left;
+  color: grey;
+}
+
+.product-price-horizontal {
+  text-align: left;
+  color: black;
 }
 
 @media screen and (min-width: 769px) {
@@ -105,6 +181,7 @@ ul {
   .products {
     grid-area: main-content;
   }
+
   .nav {
     grid-area: navbar;
     position: sticky;
@@ -115,5 +192,22 @@ ul {
     display: grid;
     grid-template-columns: 18% auto;
     grid-template-areas: "sidebar main-content main-content";
+  }
+
+  .cart-summary {
+    position: sticky;
+    top: 10%;
+    max-height: 80vh;
+    border: 1px solid black;
+    border-radius: var(--border-radius-xs);
+    padding: var(--padding-s);
+  }
+
+  .cart-desktop {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "cart-products cart-summary"
+      "cart-products .";
   }
 }

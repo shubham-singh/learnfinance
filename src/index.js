@@ -7,6 +7,7 @@ import { WishlistContextProvider } from "./Wishlist/WishlistContext";
 import App from "./App";
 
 import { BrowserRouter as Router } from "react-router-dom";
+import { SnackbarContextProvider } from "./Snackbar/SnackbarContext";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
@@ -14,9 +15,11 @@ ReactDOM.render(
     <ProductContextProvider>
       <CartContextProvider>
         <WishlistContextProvider>
-          <Router>
-            <App />
-          </Router>
+          <SnackbarContextProvider>
+            <Router>
+              <App />
+            </Router>
+          </SnackbarContextProvider>
         </WishlistContextProvider>
       </CartContextProvider>
     </ProductContextProvider>
