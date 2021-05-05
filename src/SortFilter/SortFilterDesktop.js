@@ -3,7 +3,7 @@ import { useProduct } from "../Product/ProductContext";
 const SortFilterDesktop = () => {
   const { productDispatch, showInventoryAll, category } = useProduct();
   return (
-    <aside class="sidebar hide-t">
+    <aside className="sidebar hide-t">
       <div>
         <h2>Sort By</h2>
         <div
@@ -49,7 +49,7 @@ const SortFilterDesktop = () => {
               });
             }}
           />
-          <label for="value">Value Investing</label>
+          <label htmlFor="value">Value Investing</label>
         </div>
 
         <div>
@@ -66,7 +66,7 @@ const SortFilterDesktop = () => {
               });
             }}
           />
-          <label for="options">Options Trading</label>
+          <label htmlFor="options">Options Trading</label>
         </div>
 
         <div>
@@ -83,7 +83,7 @@ const SortFilterDesktop = () => {
               });
             }}
           />
-          <label for="technical">Technical Analysis</label>
+          <label htmlFor="technical">Technical Analysis</label>
         </div>
 
         <div>
@@ -95,7 +95,7 @@ const SortFilterDesktop = () => {
             name="Include Out of Stock"
             onChange={() => productDispatch({ type: "INCLUDE_OUT_OF_STOCK" })}
           />
-          <label for="stock">Include Out of Stock</label>
+          <label htmlFor="stock">Include Out of Stock</label>
         </div>
       </div>
     </aside>
